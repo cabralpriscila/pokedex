@@ -20,7 +20,7 @@ public class PokedexApplication {
 	CommandLineRunner init (ReactiveMongoOperations operations, PokemonRepository repository){
 		return args -> {
 			Flux<Pokemon> pokemonFlux = Flux.just(
-					new Pokemon(1L, "Pikachu", "Rato", "Raios", 6.0)
+					new Pokemon(null, "Pikachu", "Rato", "Raios", 6.0)
 			).flatMap(repository::save);
 
 			pokemonFlux

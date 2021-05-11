@@ -8,7 +8,7 @@ import java.util.Objects;
 @Document
 public class Pokemon {
     @Id
-    private Long id;
+    private String id;
     private String nome;
     private String categoria;
     private String habilidade;
@@ -18,7 +18,7 @@ public class Pokemon {
         super();
     }
 
-    public Pokemon(Long id, String nome, String categoria, String habilidade, Double peso) {
+    public Pokemon(String id, String nome, String categoria, String habilidade, Double peso) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
@@ -26,11 +26,11 @@ public class Pokemon {
         this.peso = peso;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

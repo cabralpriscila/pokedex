@@ -40,8 +40,8 @@ public class PokemonController {
     }
 
     @PutMapping("{id}")
-    public Mono<ResponseEntity<Pokemon>> updatePokemon(@PathVariable(value = "id")Long id,@RequestBody Pokemon pokemon){
-        return repository.findById(String.valueOf(id))
+    public Mono<ResponseEntity<Pokemon>> updatePokemon(@PathVariable(value = "id")String id,@RequestBody Pokemon pokemon){
+        return repository.findById(id)
                 .flatMap(existingPokemon -> {
                     existingPokemon.setNome(pokemon.getNome());
                     existingPokemon.setCategoria(pokemon.getCategoria());
@@ -55,8 +55,8 @@ public class PokemonController {
     }
 
     @DeleteMapping("{id}")
-    public Mono<ResponseEntity<Object>> deletePokemon(@PathVariable(value = "id")Long id){
-        return repository.findById(String.valueOf(id))
+    public Mono<ResponseEntity<Object>> deletePokemon(@PathVariable(value = "id")String id){
+        return repository.findById(id)
                 .flatMap(existingPokemon ->
                         repository.delete(existingPokemon)
                             .then(Mono.just((ResponseEntity.ok().build())))
