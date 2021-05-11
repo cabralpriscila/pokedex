@@ -27,8 +27,8 @@ public class PokemonController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<Pokemon>> getPokemonById(@PathVariable Long id){
-        return repository.findById(String.valueOf(id))
+    public Mono<ResponseEntity<Pokemon>> getPokemonById(@PathVariable String id){
+        return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
